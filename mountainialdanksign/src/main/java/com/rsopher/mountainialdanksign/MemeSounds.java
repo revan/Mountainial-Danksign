@@ -60,13 +60,14 @@ public class MemeSounds {
         DRAMATIC(R.raw.dramatic),
         EXPLOSION(R.raw.dramatic),
         HEADSHOT(R.raw.dramatic),
-        HIT(R.raw.dramatic),
+        HIT(R.raw.hit),
         NOSIGNAL(R.raw.nosignal),
         SLOWMO(R.raw.slowmo),
         SMOKEWEED(R.raw.smokeweed),
+        TRIPLE(R.raw.triple),
         WHATTHEFU(R.raw.whatthefu);
 
-        private int id;
+        public int id;
         private Sounds(int id) {
             this.id = id;
         }
