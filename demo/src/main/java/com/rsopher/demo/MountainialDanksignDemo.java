@@ -35,6 +35,6 @@ public class MountainialDanksignDemo extends ActionBarActivity {
         });
 
         memeImages = MemeImages.getInstance();
-        memeImages.addHitMarkers(this, (RelativeLayout) findViewById(R.id.layout));
+        memeImages.addHitMarkers(this, (RelativeLayout) findViewById(R.id.meme_layer));
     }
 }

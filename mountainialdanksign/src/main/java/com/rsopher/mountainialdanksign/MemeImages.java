@@ -36,18 +36,11 @@ public class MemeImages {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     // Create ImageView at touch location
-                    // TODO: location is kinda off.
-                    final ImageView imageView = new ImageView(context);
-                    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                            RelativeLayout.LayoutParams.WRAP_CONTENT,
-                            RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    int[] location = new int[2];
-                    view.getLocationOnScreen(location);
-                    params.leftMargin = (int) motionEvent.getX() - location[0];
-                    params.topMargin = (int) motionEvent.getY() - location[1];
-                    imageView.setLayoutParams(params);
+                    final ImageView imageView = getImageView(context, Images.HITMARKER);
 
-                    imageView.setImageResource(Images.HITMARKER.id);
+                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) imageView.getLayoutParams();
+                    params.leftMargin = (int) motionEvent.getX() - imageView.getWidth()/2;
+                    params.topMargin = (int) motionEvent.getY() - imageView.getHeight()/2;
                     target.addView(imageView);
 
                     // Play sound
@@ -60,12 +53,25 @@ public class MemeImages {
                             imageView.setVisibility(View.GONE);
                         }
                     }, 1 * 1000);
-                    return true;
+                    return false;
                 }
                 return false;
             }
         });
-        ImageView imageView = new ImageView(context);
+    }
+
+    public ImageView getImageView(Context context, Images id) {
+        final ImageView imageView = new ImageView(context);
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+        imageView.setImageResource(id.id);
+
+        imageView.setLayoutParams(params);
+
+        return  imageView;
     }
 
     public enum Images {
